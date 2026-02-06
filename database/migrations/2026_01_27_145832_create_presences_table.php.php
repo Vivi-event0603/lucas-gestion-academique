@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('presences', function (Blueprint $table) {
-    $table->id();
-    $table->date('date_presence');
-    $table->enum('statut', ['Présent', 'Absent']);
-    $table->foreignId('student_id')->nullable()->constrained()->onDelete('cascade');
-    $table->foreignId('teacher_id')->nullable()->constrained()->onDelete('cascade');
-    $table->timestamps();
-});
-//
+        Schema::create('soutenances', function (Blueprint $table) {
+            $table->id();
+            $table->date('date_soutenance');
+            $table->enum('statut', ['Valide', 'Ajourne']);
+            $table->text('description')->nullable();
+            $table->foreignId('student_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('directeur_memoire_id')->nullable()->constrained('teachers')->nullOnDelete();
+            $table->foreignId('evaluateur_id')->nullable()->constrained('teachers')->nullOnDelete();
+            $table->foreignId('president_jury_id')->nullable()->constrained('teachers')->nullOnDelete();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('soutenances');
     }
 };
