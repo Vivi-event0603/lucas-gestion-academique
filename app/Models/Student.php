@@ -16,7 +16,11 @@ class Student extends Model
         'email',
         'telephone',
         'filiere',
+
         'niveau'
+
+        'niveau',
+
     ];
 
     public function memoires()
@@ -24,12 +28,21 @@ class Student extends Model
         return $this->hasMany(Memoire::class);
     }
 
+
     public function presences()
     {
         return $this->hasMany(Presence::class);
     }
 
     public function paiements()
+
+    public function soutenances()
+    {
+        return $this->hasMany(Soutenance::class);
+    }
+
+    public function recuPaiements()
+
     {
         return $this->hasMany(RecuPaiement::class);
     }

@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('memoires', function (Blueprint $table) {
+
     $table->id();
     $table->string('titre');
     $table->year('annee');
@@ -21,6 +22,15 @@ return new class extends Migration
     $table->timestamps();
 });
 //
+
+            $table->id();
+            $table->string('titre');
+            $table->year('annee');
+            $table->string('fichier_pdf');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
+
     }
 
     /**

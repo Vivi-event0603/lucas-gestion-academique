@@ -9,6 +9,7 @@ class RecuPaiement extends Model
 {
     use HasFactory;
 
+
     protected $table = 'recu_paiements';
 
     protected $fillable = [
@@ -16,6 +17,14 @@ class RecuPaiement extends Model
         'montant',
         'date_paiement',
         'reference'
+
+    protected $fillable = [
+        'numero_recu',
+        'montant',
+        'date_paiement',
+        'fichier_pdf',
+        'student_id',
+
     ];
 
     public function student()

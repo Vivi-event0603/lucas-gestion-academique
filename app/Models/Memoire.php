@@ -9,12 +9,21 @@ class Memoire extends Model
 {
     use HasFactory;
 
+
    protected $fillable = [
     'student_id',
     'titre',
     'annee',
     'fichier_pdf',
 ];
+
+
+    protected $fillable = [
+        'titre',
+        'annee',
+        'fichier_pdf',
+        'student_id',
+    ];
 
 
     public function student()
