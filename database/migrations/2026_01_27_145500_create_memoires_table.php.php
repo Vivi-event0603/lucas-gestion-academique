@@ -15,7 +15,8 @@ return new class extends Migration
     $table->id();
     $table->string('titre');
     $table->year('annee');
-    $table->string('fichier_pdf'); // chemin du fichier
+    $table->string('fichier_pdf')->nullable();
+ // chemin du fichier
     $table->foreignId('student_id')->constrained()->onDelete('cascade');
     $table->timestamps();
 });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('memoires');
     }
 };

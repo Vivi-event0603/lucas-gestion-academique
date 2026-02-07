@@ -11,6 +11,15 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+public function isAdmin()
+{
+    return $this->role === 'admin';
+}
+
+public function isUser()
+{
+    return $this->role === 'user';
+}
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +30,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
